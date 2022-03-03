@@ -1,4 +1,4 @@
-package com.testcricket.cricketdata;
+package com.testcricket.cricketdata.TestMatch;
 
 import com.testcricket.cricketdata.TestMatch.TestMatch;
 import org.springframework.data.mongodb.repository.MongoRepository;

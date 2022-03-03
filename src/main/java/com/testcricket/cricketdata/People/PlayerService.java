@@ -2,7 +2,7 @@ package com.testcricket.cricketdata.People;
 
 import com.testcricket.cricketdata.Profile.*;
 import com.testcricket.cricketdata.TestMatch.*;
-import com.testcricket.cricketdata.TestMatchRepository;
+import com.testcricket.cricketdata.TestMatch.TestMatchRepository;
 import com.testcricket.cricketdata.Util.StrikeRate;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

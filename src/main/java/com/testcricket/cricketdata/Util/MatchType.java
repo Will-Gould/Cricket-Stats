@@ -1,4 +1,4 @@
-package com.testcricket.cricketdata;
+package com.testcricket.cricketdata.Util;
 
 public enum MatchType {
 

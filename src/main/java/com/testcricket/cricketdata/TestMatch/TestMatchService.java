@@ -1,7 +1,5 @@
 package com.testcricket.cricketdata.TestMatch;
 
-import com.testcricket.cricketdata.Profile.PlayerProfile;
-import com.testcricket.cricketdata.TestMatchRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
