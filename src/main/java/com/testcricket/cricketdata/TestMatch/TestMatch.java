@@ -1,11 +1,7 @@
 package com.testcricket.cricketdata.TestMatch;
 
-import com.testcricket.cricketdata.Gender;
-import com.testcricket.cricketdata.MatchType;
-import com.testcricket.cricketdata.People.Official;
-import com.testcricket.cricketdata.People.Person;
-import com.testcricket.cricketdata.People.Player;
-import com.testcricket.cricketdata.People.Team;
+import com.testcricket.cricketdata.Util.Gender;
+import com.testcricket.cricketdata.Util.MatchType;
 import com.testcricket.cricketdata.Util.TeamList;
 import lombok.Data;
 import org.springframework.data.annotation.Id;

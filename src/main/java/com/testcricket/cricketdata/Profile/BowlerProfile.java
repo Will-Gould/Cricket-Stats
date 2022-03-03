@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 public class BowlerProfile extends PlayerProfile{
 
-    private List<BowlingInnings> bowlingInnings;
     private int wickets;
     private int deliveries;
     private int runs;
@@ -18,6 +17,7 @@ public class BowlerProfile extends PlayerProfile{
     private int fourWicketInnings;
     private int fiveWicketInnings;
     private int tenWicketMatches;
+    private List<BowlingInnings> bowlingInnings;
 
     public BowlerProfile(Player player, Role roleFocus, List<BattingInnings> battingInnings, List<BowlingInnings> bowlingInnings, int tenWicketMatches) {
         super(player, roleFocus, battingInnings);
