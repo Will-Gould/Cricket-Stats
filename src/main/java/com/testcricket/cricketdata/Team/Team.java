@@ -1,4 +1,4 @@
-package com.testcricket.cricketdata.People;
+package com.testcricket.cricketdata.Team;
 
 import lombok.Data;
 import lombok.Getter;

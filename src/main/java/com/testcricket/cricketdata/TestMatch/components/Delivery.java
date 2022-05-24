@@ -1,7 +1,5 @@
-package com.testcricket.cricketdata.TestMatch;
+package com.testcricket.cricketdata.TestMatch.components;
 
-import com.testcricket.cricketdata.People.Person;
-import com.testcricket.cricketdata.People.Player;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

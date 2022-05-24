@@ -1,5 +1,6 @@
-package com.testcricket.cricketdata.People;
+package com.testcricket.cricketdata.Player;
 
+import com.testcricket.cricketdata.People.Person;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Document
-public class Player extends Person{
+public class Player extends Person {
 
     private List<String> teams;
 

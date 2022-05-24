@@ -1,6 +1,5 @@
 package com.testcricket.cricketdata.Util;
 
-import com.testcricket.cricketdata.People.Player;
 import lombok.Getter;
 import lombok.Setter;
 

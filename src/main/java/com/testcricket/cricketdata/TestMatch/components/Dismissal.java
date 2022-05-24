@@ -1,4 +1,4 @@
-package com.testcricket.cricketdata.TestMatch;
+package com.testcricket.cricketdata.TestMatch.components;
 
 public enum Dismissal {
 

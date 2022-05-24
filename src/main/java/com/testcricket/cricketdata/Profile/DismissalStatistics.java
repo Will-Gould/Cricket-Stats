@@ -1,11 +1,8 @@
 package com.testcricket.cricketdata.Profile;
 
-import com.testcricket.cricketdata.People.Player;
-import com.testcricket.cricketdata.People.PlayerRepository;
-import com.testcricket.cricketdata.TestMatch.Dismissal;
+import com.testcricket.cricketdata.TestMatch.components.Dismissal;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 
 import java.util.*;
 
