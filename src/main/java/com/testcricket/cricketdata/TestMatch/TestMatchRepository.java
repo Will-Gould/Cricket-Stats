@@ -11,4 +11,5 @@ public interface TestMatchRepository extends MongoRepository<TestMatch, String> 
     @Query("{ 'teams.players': ?0 }")
     public List<TestMatch> fetchFeaturedTestMatches(String id);
 
+    boolean existsByFileId(String fileId);
 }

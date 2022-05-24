@@ -1,8 +1,11 @@
-package com.testcricket.cricketdata.People;
+package com.testcricket.cricketdata.Player;
 
 import com.testcricket.cricketdata.Profile.*;
+import com.testcricket.cricketdata.Series.Series;
+import com.testcricket.cricketdata.Series.SeriesRepository;
 import com.testcricket.cricketdata.TestMatch.*;
 import com.testcricket.cricketdata.TestMatch.TestMatchRepository;
+import com.testcricket.cricketdata.TestMatch.components.*;
 import com.testcricket.cricketdata.Util.StrikeRate;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ public class PlayerService {
 
     private final PlayerRepository playerRepository;
     private final TestMatchRepository testMatchRepository;
+    private final SeriesRepository seriesRepository;
+
 
     public List<Player> fetchAllPlayers(){
         return playerRepository.findAll();
@@ -51,6 +56,54 @@ public class PlayerService {
         return Optional.of(getBatterProfile(player, testMatches));
 
     }
+
+    public Optional<PlayerProfile> fetchPlayerProfile(String id, Role role, String series){
+        Optional<Player> p = playerRepository.findById(id);
+        if(p.isEmpty()){
+            System.out.println("P is empty!");
+            return Optional.empty();
+        }
+        Player player = p.get();
+
+//        switch(profileType){
+//            case "batter" -> roleFocus = Role.BATTER;
+//            case "bowler" -> roleFocus = Role.BOWLER;
+//            case "all rounder" -> roleFocus = Role.ALL_ROUNDER;
+//            case "wicket keeper" -> roleFocus = Role.WICKET_KEEPER;
+//        }
+
+        //Get list of matches from this series
+        Optional<Series> o = seriesRepository.findById(series);
+        ArrayList<TestMatch> testMatches = new ArrayList<>();
+
+        Series s;
+        if(o.isEmpty()){
+            return Optional.empty();
+        }else{
+            s = o.get();
+        }
+
+        s.getMatches().forEach(m -> {
+            Optional<TestMatch> t = testMatchRepository.findById(m);
+            t.ifPresent(testMatches::add);
+        });
+
+        switch(role){
+            case BATTER -> {
+                return Optional.of(getBatterProfile(player, testMatches));
+            }
+            case BOWLER -> {
+                return Optional.of(getBowlerProfile(player, testMatches));
+            }
+        }
+
+        return Optional.of(getBatterProfile(player, testMatches));
+
+    }
+//
+//    public Optional<PlayerProfile> fetchPlayerProfile(String id, Role role, String season){
+//
+//    }
 
     private PlayerProfile getBatterProfile(Player p, List<TestMatch> testMatches){
 
@@ -381,6 +434,16 @@ public class PlayerService {
             }
         }
         return tenWicketHauls;
+    }
+
+    private boolean didPlayerFeature(Player p, TestMatch t){
+        List<String> players = t.getAllPlayers();
+        for(String s : players){
+            if(s.equals(p.getId())){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

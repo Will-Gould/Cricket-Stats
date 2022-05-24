@@ -1,6 +1,6 @@
 package com.testcricket.cricketdata.Profile;
 
-import com.testcricket.cricketdata.People.Player;
+import com.testcricket.cricketdata.Player.Player;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +14,7 @@ public class BowlerProfile extends PlayerProfile{
     private int deliveries;
     private int runs;
     private int maidens;
+    private double bowlingAverage;
     private int fourWicketInnings;
     private int fiveWicketInnings;
     private int tenWicketMatches;
@@ -28,6 +29,13 @@ public class BowlerProfile extends PlayerProfile{
         this.fourWicketInnings = findFourWicketInnings();
         this.fiveWicketInnings = findFiveWicketInnings();
         this.tenWicketMatches = tenWicketMatches;
+        this.bowlingAverage = findBowlingAverage();
+    }
+
+    private Double findBowlingAverage(){
+        double runs = (double) this.runs;
+        double wickets = (double) this.wickets;
+        return runs/wickets;
     }
 
     private int findDeliveries(){

@@ -1,6 +1,6 @@
 package com.testcricket.cricketdata.Profile;
 
-import com.testcricket.cricketdata.TestMatch.Dismissal;
+import com.testcricket.cricketdata.TestMatch.components.Dismissal;
 import lombok.Getter;
 import lombok.Setter;
 

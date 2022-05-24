@@ -1,6 +1,5 @@
-package com.testcricket.cricketdata.People;
+package com.testcricket.cricketdata.Player;
 
-import com.testcricket.cricketdata.Profile.PlayerProfile;
 import com.testcricket.cricketdata.Profile.Role;
 import com.testcricket.cricketdata.Util.Response;
 import lombok.AllArgsConstructor;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import static java.time.LocalDateTime.now;
 
@@ -52,7 +49,7 @@ public class PlayerController {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(Map.of("player", playerService.fetchPlayerProfile(playerId, r)))
+                        .data(Map.of("profile", playerService.fetchPlayerProfile(playerId, r)))
                         .message("Player retrieved")
                         .status(HttpStatus.OK)
                         .statusCode(HttpStatus.OK.value())
@@ -66,6 +63,33 @@ public class PlayerController {
 //            return playerService.fetchPlayerProfile(playerId, Role.BOWLER);
 //        }
 //        return playerService.fetchPlayerProfile(playerId, Role.BATTER);
+    }
+
+    @GetMapping(value = {"{playerId}/{role}/{seriesId}"})
+    public ResponseEntity<Response> fetchPlayerSeriesProfile(
+            @PathVariable String playerId,
+            @PathVariable(required = false) String role,
+            @PathVariable String seriesId
+    ){
+        Role r;
+        if(role == null){
+            r = Role.BATTER;
+        }else{
+            switch(role){
+                case "bowler" -> {r = Role.BOWLER;}
+                default -> {r = Role.BATTER;}
+            }
         }
+
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(Map.of("profile", playerService.fetchPlayerProfile(playerId, r, seriesId)))
+                        .message("Player retrieved")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .build()
+        );
+    }
 
 }

@@ -1,17 +1,25 @@
 package com.testcricket.cricketdata.TestMatch;
 
+import com.testcricket.cricketdata.TestMatch.components.Decision;
+import com.testcricket.cricketdata.TestMatch.components.Innings;
+import com.testcricket.cricketdata.TestMatch.components.Outcome;
 import com.testcricket.cricketdata.Util.Gender;
 import com.testcricket.cricketdata.Util.MatchType;
 import com.testcricket.cricketdata.Util.TeamList;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Document
+@NoArgsConstructor
+@Getter
 public class TestMatch {
 
     @Id
@@ -80,6 +88,65 @@ public class TestMatch {
         this.venue = venue;
         this.innings = innings;
 
+    }
+
+    public TestMatch(
+            String id,
+            String fileId,
+            int ballsPerOver,
+            String city,
+            List<LocalDate> dates,
+            String event,
+            int matchNumber,
+            Gender gender,
+            MatchType matchType,
+            int matchTypeNumber,
+            List<String> matchReferees,
+            List<String> tvUmpires,
+            List<String> fieldUmpires,
+            Outcome outcome,
+            List<String> playerOfTheMatch,
+            List<TeamList> teams,
+            String season,
+            String tossWinner,
+            Decision tossDecision,
+            String venue,
+            List<Innings> innings) {
+
+        this.id = id;
+        this.fileId = fileId;
+        this.ballsPerOver = ballsPerOver;
+        this.city = city;
+        this.dates = dates;
+        this.event = event;
+        this.matchNumber = matchNumber;
+        this.gender = gender;
+        this.matchType = matchType;
+        this.matchTypeNumber = matchTypeNumber;
+        this.matchReferees = matchReferees;
+        this.tvUmpires = tvUmpires;
+        this.fieldUmpires = fieldUmpires;
+        this.outcome = outcome;
+        this.playerOfTheMatch = playerOfTheMatch;
+        this.teams = teams;
+        this.season = season;
+        this.tossWinner = tossWinner;
+        this.tossDecision = tossDecision;
+        this.venue = venue;
+        this.innings = innings;
+
+    }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public List<String> getAllPlayers(){
+        ArrayList<String> players = new ArrayList<>();
+        for(TeamList t : this.teams){
+            players.addAll(t.getPlayers());
+        }
+        return players;
     }
 
 }

@@ -20,4 +20,10 @@ public class TestMatchService {
         return testMatchRepository.findById(matchId);
     }
 
+    public boolean existsByFileId(String fileId){
+        return testMatchRepository.existsByFileId(fileId);
+    }
+
+
+
 }
